@@ -1,27 +1,18 @@
-import java.util.Scanner;
-
-
 public class Main {
-    public static void main(String[] args) throws Exception {
-        Scanner reader = new Scanner(System.in); 
-            Event event = new Event(); 
-                
-             int choice = 0;  
-            do {  
-                System.out.println("Here is what you can do in the progress");  
-                System.out.println("Type 1 to enter event details:");  
-                System.out.println("Type 2 to enter attendee name that are coming to the event");  
-                System.out.println("Type 3 to remove an attendee from the list"); 
-                System.out.println("Type 4 to update an attendee in the List");  
-                System.out.println("Type 5 to search for an attendees from the event");  
-                System.out.println("Type 6 to display all the attendees from the event");  
-                System.out.println("Type 7 for complementary pass operations:"); 
-                System.out.println("Type 8 to handle performances:");
-                System.out.println("Tipe 9 to get seating details:" + "\n");
-                System.out.println("Quit");
-                choice = reader.nextInt(); 
-                event.organizeEvent(choice); 
-            } while (choice != 10);
-            reader.close();
+    public static void main(String[] args) {
+        Event event = new Event("E001", "Business Conference", "New York", "John Smith",
+                5000.00, 100, 2);
+        System.out.println(event.toString());
+        System.out.println("Event Cost: $" + event.calculateEventCost());
+
+        ConferenceEvent conferenceEvent = new ConferenceEvent("E002", "Tech Summit", "San Francisco", "Jane Doe",
+                8000.00, 200, 3, true, 10.00, true, 15.00, true, 20.00);
+        System.out.println(conferenceEvent.toString());
+        System.out.println("Event Cost: $" + conferenceEvent.calculateEventCost());
+
+        MusicConcertEvent musicConcertEvent = new MusicConcertEvent("E003", "Rock Concert", "Los Angeles", "Mike Johnson",
+                10000.00, 500, 1, true, 5.00);
+        System.out.println(musicConcertEvent.toString());
+        System.out.println("Event Cost: $" + musicConcertEvent.calculateEventCost());
     }
 }
